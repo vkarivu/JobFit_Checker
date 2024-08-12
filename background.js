@@ -19,5 +19,17 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "updateBadge") {
     chrome.action.setBadgeText({ text: request.count.toString() });
   }
+
+
+  if (request.action === 'refreshContent') {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            chrome.scripting.executeScript({
+                target: { tabId: tabs[0].id },
+                files: ['content.js']
+            });
+        });
+    }
+
+    
 });
 

@@ -1,4 +1,28 @@
+function refreshPopupUI() {
+    chrome.storage.local.get(['wordsToMatch', 'matchedWords', 'unmatchedWords'], (result) => {
+        const wordListTextarea = document.getElementById('wordList');
+        const matchedWordsDiv = document.getElementById('matchedWords');
+        const unmatchedWordsDiv = document.getElementById('unmatchedWords');
+
+        if (result.wordsToMatch && result.wordsToMatch.length > 0) {
+            wordListTextarea.value = result.wordsToMatch.join(', ');
+            matchedWordsDiv.innerText = `Matched Words: ${result.matchedWords.join(', ')}`;
+            unmatchedWordsDiv.innerText = `Unmatched Words: ${result.unmatchedWords.join(', ')}`;
+        } else {
+            wordListTextarea.value = '';
+            matchedWordsDiv.innerText = 'Matched Words: None';
+            unmatchedWordsDiv.innerText = 'Unmatched Words: None';
+        }
+    });
+}
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
+
+        refreshPopupUI();  // Call the refresh function when the popup loads
+
+
     const wordListTextarea = document.getElementById('wordList');
     const saveButton = document.getElementById('saveWords');
     const editButton = document.getElementById('editWords');
@@ -41,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Reset matched and unmatched words after saving new list
             matchedWordsDiv.innerText = 'Matched Words: None';
             unmatchedWordsDiv.innerText = 'Unmatched Words: None';
+
+            // Force a re-analysis or reload the content script
+        chrome.runtime.sendMessage({ action: 'refreshContent' });
         });
     });
 
