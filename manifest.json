@@ -5,7 +5,7 @@
   "description": "Matches words on the page and shows the count on the icon.",
   "permissions": ["activeTab", "scripting", "tabs",   "storage"],
    "host_permissions": [
-    "*://www.linkedin.com/*"
+  "https://www.linkedin.com/jobs/*"
 ],
  
 
