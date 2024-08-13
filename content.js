@@ -23,9 +23,20 @@ if (!location.href.includes("chrome://")) {
             floatingContainer.remove();
         }
 
-        // Normalize the body text
-        let bodyText = document.body.innerText || document.body.textContent;
-        let normalizedBodyText = normalizeText(bodyText);
+
+     
+
+        let normalizedBodyText = "";
+if (location.href.includes("linkedin.com")) {
+    normalizedBodyText = normalizeText(document.querySelector("[class*='jobs-search__job-details']").innerText);
+} else if (location.href.includes("monster.com")) {
+    normalizedBodyText = normalizeText(document.querySelector("[class*=splitview][class*='style__JobContainer']").innerText);
+} else if (location.href.includes("indeed.com")) {
+    normalizedBodyText = normalizeText(document.querySelector("#job-full-details").innerText);
+} else {
+    normalizedBodyText = normalizeText(document.body.innerText || document.body.textContent);
+}
+
 
         // Initialize arrays for matched and unmatched words
         let matchedWords = [];

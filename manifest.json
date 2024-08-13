@@ -5,8 +5,12 @@
   "description": "Matches words on the page and shows the count on the icon.",
   "permissions": ["activeTab", "scripting", "tabs",   "storage"],
    "host_permissions": [
-    "*://*/*job*/*",
-  "*://*/*career*/*"
+  //   "*://*/*job*/*",
+  // "*://*/*career*/*"
+
+    // "*://*/*"
+        "*://www.linkedin.com/*"
+
 ],
  
 

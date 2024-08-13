@@ -2,7 +2,7 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status === 'complete') {
       // Check if the tab URL is valid before injecting the content script
-            if (tab.url.toLowerCase().includes("job") || tab.url.toLowerCase().includes("career")) {
+            // if (tab.url.toLowerCase().includes("job") || tab.url.toLowerCase().includes("career")) {
 
         chrome.scripting.executeScript({
           target: { tabId: tabId },
@@ -10,7 +10,7 @@ chrome.runtime.onInstalled.addListener(() => {
         }).catch(err => {
           console.error('ARI==>Error injecting script:', err);
         });
-      }
+      // }
     }
   });
 });
