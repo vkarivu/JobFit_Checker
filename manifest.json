@@ -3,9 +3,12 @@
   "name": "JobFit Checker",
   "version": "1.0",
   "description": "Matches words on the page and shows the count on the icon.",
-  "permissions": ["activeTab", "scripting", "tabs",   "storage"],
+  "permissions": ["activeTab", "scripting", "storage"],
+  
+
    "host_permissions": [
-  "https://www.linkedin.com/jobs/*"
+  // "*://*/*"
+  "*://*.linkedin.com/*"
 ],
  
 
