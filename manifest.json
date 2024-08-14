@@ -7,7 +7,6 @@
   
 
    "host_permissions": [
-  // "*://*/*"
   "*://*.linkedin.com/*"
 ],
  
